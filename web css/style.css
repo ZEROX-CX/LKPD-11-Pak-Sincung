@@ -1,0 +1,19 @@
+body {
+background-color: white;
+}
+
+.container {
+width: 80%;
+border: #e81a8b 1px solid;
+margin: auto;
+background: rgb(0, 255, 217);
+padding: 20px;
+}
+
+h1 {
+color: #e81a8b;
+}
+
+p {
+font-size: 16px;
+}

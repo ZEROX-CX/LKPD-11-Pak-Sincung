@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+
+body {
+  background-color: #F7F0D0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inverted-border-radius {
+  position: relative;
+  height: 100px;
+  width: 325px;
+  background-color: #F66969;
+  border-radius: 25px 25px 25px 0;
+}
+
+.inverted-border-radius::before {
+  content: "";
+  position: absolute;
+  
+  background-color: white;
+  bottom: -50px;
+  height: 50px;
+  width: 25px;
+  border-top-left-radius: 25px;
+  box-shadow: 0 -25px 0 0 #F66969;
+}
+    </style>
+</head>
+<body>
+    <div class="inverted-border-radius"></div>
+</body>
+</html>

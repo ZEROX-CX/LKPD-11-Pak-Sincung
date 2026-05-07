@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Pembelajaran Interaktif - Menggambar 2D</title>
+  <style>
+
+    @font-face {
+    font-family: "Fylia";
+    src: url("fonts/fylia.otf") format("opentype");
+    }
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
+
+    nav {
+        background-color: #131432;
+        height: 100vh;
+        color: white;
+        padding: 20px;
+        width: 200px;
+    }
+
+    nav h1 {
+        margin: 10px 0;
+        font-size: 16px;
+        color: #8CA9FF;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+
+    .container {
+        display: flex;
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 160px;
+    }
+
+    .sidebar button {
+        padding: 12px;
+        background-color: #8CA9FF;
+        color: #131432;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .sidebar button:hover {
+        background-color: #262424;
+        color: #8CA9FF;
+    }
+
+    .content {
+        text-align: center;
+        width: 100%;
+        background: #3E3F61;
+        padding: 30px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .content h2 {
+      color: #8CA9FF;
+      margin-bottom: 15px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .content p {
+      /* line-height: 1.6; */
+      margin-bottom: 15px;
+      color: white;
+      font-size: 18px;
+    }
+
+
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table th {
+      background-color: #131432;
+      color: #8CA9FF;
+      padding: 12px;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    table td {
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      padding: 12px;
+      color: white;
+    }
+
+    table tr:hover {
+      background-color: #8CA9FF;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      outline-color: #fec494;
+      font-size: 14px;
+    }
+
+
+    button.btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      margin-right: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .submit {
+      background: green;
+      color: white;
+    }
+
+    .reset {
+      background: red;
+      color: white;
+    }
+
+    .latihan-p {
+      text-align: left;
+    }
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  nav {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sidebar button {
+    flex: 1 1 45%;
+    margin: 5px;
+    font-size: 13px;
+  }
+
+  .content {
+    padding: 20px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar button {
+    flex: 1 1 100%;
+    font-size: 14px;
+    min-width: 0;
+  }
+
+  .content {
+    
+    padding: 15px;
+  }
+
+  .content h2 {
+    font-size: 20px;
+  }
+
+  .content p {
+    font-size: 16px;
+  }
+
+  .container {
+    gap: 10px;
+  }
+
+  nav {
+    padding: 15px;
+  }
+
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav>
+    <svg width="30" height="30" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M33.3425 27.9769C37.5733 31.5269 43.8814 30.975 47.4315 26.7443L63.3379 7.78708C51.3889 26.4219 53.0364 51.2554 68.2856 68.1777L36.3387 41.3712C32.108 37.8214 25.8012 38.3733 22.2511 42.6038L5.9504 62.0285C18.4502 42.8738 16.4692 17.0291 6.87097e-05 -6.87097e-05L33.3425 27.9769Z" fill="url(#paint0_linear_1499_187)"/>
+        <defs>
+            <linearGradient id="paint0_linear_1499_187" x1="95.129" y1="46.2126" x2="22.1888" y2="-26.7276" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F2DE9B"/>
+                <stop offset="0.8" stop-color="#7F7FFF"/>
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <h1>Media Pembelajaran</h1>
+    <div class="sidebar">
+      <button onclick="menu('home')">PETUNJUK</button>
+      <button onclick="menu('kikd')">KI / KD</button>
+      <button onclick="menu('materi')">MATERI</button>
+      <button onclick="menu('latihan')">LATIHAN SOAL</button>
+      <button onclick="menu('evaluasi')">EVALUASI</button>
+      <button onclick="menu('profil')">PROFIL</button>
+    </div>
+  </nav>
+
+  <div class="content" id="content">
+    <h2>SELAMAT DATANG</h2>
+    <p>Pada Pembelajaran Interaktif <b>Seni Budaya</b></p>
+    <p>Silakan memilih menu di samping untuk menggunakan media ini.</p>
+  </div>
+
+</div>
+  
+</div>
+  <div class="container">
+  </div>
+
+
+  <script type="text/javascript">
+    function menu(menu) {
+      let c = document.getElementById("content");
+
+      if (menu == "home") {
+        c.innerHTML = `
+          <h2>PETUNJUK</h2>
+          <p>1. Pilih menu yang tersedia untuk memulai.</p>
+          <p>2. Pelajari materi seni budaya</p>
+          <p>3. Jangan lupa, kerjakan latihan soal yang tersedia.</p>
+        `;
+      }
+
+      if (menu == "kikd") {
+        c.innerHTML = `
+          <h2>KI / KD</h2>
+          <p>KI : Dapat menemukan unsur, prinsip dan bahan dalam karya seni rupa serta memberikan contoh karya seni rupa dua dimensi</p>
+          <p>KD : Dapat mengindentifikasi teknik dalam berkarya seni rupa dua dimensi</p>
+        `;
+      }
+
+      if (menu == "materi") {
+        c.innerHTML = `
+          <h2>MATERI Javascript</h2>
+          <div class="box-materi">
+            <p>
+              <span class="highlight">Apa itu Seni rupa?</span>
+            </p>
+          </div>
+          <table>
+            <tr>
+              <th>No</th>
+              <th>Unsur Javascript</th>
+              <th>Keterangan</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>if else</td>
+              <td>if else adalah sebuah kode yang dimana kodenya hanya akan dieksekusi jika berhasil terdapat kondisi tertentu</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>function</td>
+              <td>function adalah sebuah blok kode yang bisa digunakan ulang lagi</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>variabel</td>
+              <td>Variabel digunakan untuk menyimpan sebuah data, ada berbagai data yang bisa disimpan yaitu string, integer, dan boolean</td>
+            </tr>
+          </table>
+        `;
+      }
+
+      if (menu == "latihan") {
+        c.innerHTML = `
+          <h2>LATIHAN SOAL</h2>
+          <p class="latihan-p">1. apa kegunaan dari function? </p>
+          <input id="q1">
+          <p class="latihan-p">2. kapan kita harus menggunakan if else?
+          </p>
+          <input id="q2">
+          <button class="btn submit" onclick="nilai()">Kirim Jawaban</button>
+          <button class="btn reset" onclick="reset()">Reset</button>
+          <p id="hasil"></p>
+        `;
+      }
+
+      if (menu == "evaluasi") {
+        c.innerHTML = `
+          <h2>EVALUASI</h2>
+          <p>Apakah kamu mengalami kendala saat menggunakan media pembelajaran ini?</p>
+          <p>Silakan tuliskan kesan atau kendalamu di bawah ini:</p>
+          <textarea id="kendala" rows="5" placeholder="Tuliskan kendala atau kesanmu..."></textarea>
+          <button class="btn submit" onclick="kirimEvaluasi()">Kirim</button>
+          <p id="pesan"></p>
+        `;
+      }
+
+      if (menu == "profil") {
+        c.innerHTML = `
+          <h2>PROFIL</h2>
+          <p>Nama : Akhmad Noor Wahyuni</p>
+          <p>Kelas : XI PPLG A</p>
+          <p>Sekolah : Smkn 2 Banjarmasin</p>
+        `;
+      }
+    }
+
+    function nilai() {
+      let q1 = document.getElementById("q1").value;
+      let q2 = document.getElementById("q2").value;
+
+      if (q1 == "" || q2 == "") {
+        alert("Jawaban tidak boleh kosong!");
+        return;
+      }
+
+      let skor = 0;
+
+      if (q1.toLowerCase() == "2 dimensi" || q1.toLowerCase() == "dua dimensi") {
+        skor += 50;
+      }
+
+      if (q2.toLowerCase() == "garis") {
+        skor += 50;
+      }
+
+      document.getElementById("hasil").innerHTML = "Skor Anda : " + skor;
+    }
+
+    function reset() {
+      document.getElementById("q1").value = "";
+      document.getElementById("q2").value = "";
+      document.getElementById("hasil").innerHTML = "";
+    }
+
+    function kirimEvaluasi() {
+      let kendala = document.getElementById("kendala").value;
+
+      if (kendala == "") {
+        alert("Silakan tuliskan kendala terlebih dahulu.");
+        return;
+      }
+
+      document.getElementById("pesan").innerHTML = "Terima kasih atas masukan yang kamu berikan.";
+    }
+  </script>
+</body>
+</html>

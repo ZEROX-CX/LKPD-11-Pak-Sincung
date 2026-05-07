@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+	<meta charset="UTF-8">
+	<title>Layout Responsif Flexbox & Grid</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, sans-serif;
+}
+.grid-container {
+	display: grid;
+	grid-template-areas:
+    	"header header"
+    	"sidebar content"
+    	"footer footer";
+	grid-template-columns: 1fr 3fr;
+	gap: 10px;
+	padding: 10px;
+}
+.header {
+    background-color: black;
+	grid-area: header;
+	color: rgb(255, 255, 255);
+	padding: 15px;
+	text-align: center;
+}
+ 
+aside ul {
+    list-style: none;
+}
+
+.sidebar {
+	grid-area: sidebar;
+	background: #e3f2fd;
+	padding: 15px;
+}
+ 
+.content {
+	grid-area: content;
+	display: flex;
+	gap: 10px;
+}
+ 
+.footer {
+    background-color: rgb(0, 0, 0);
+	grid-area: footer;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	padding: 10px;
+}
+.card {
+	background: #bbdefb;
+	flex: 1;
+	padding: 20px;
+	text-align: center;
+}
+@media (max-width: 768px) {
+	.grid-container {
+    	grid-template-areas:
+        	"header"
+            "sidebar"
+        	"content"
+        	"footer";
+    	grid-template-columns: 1fr;
+	}
+ 
+	.content {
+    	flex-direction: column;
+	}
+}
+
+</style>
+<body>
+ 
+<div class="grid-container">
+	<header class="header">
+    	<h1>Website Profil Kelas XI PPLG</h1>
+	</header>
+ 
+	<aside class="sidebar">
+    	<ul>
+        	<li>Beranda</li>
+        	<li>Profil</li>
+        	<li>Galeri</li>
+        	<li>Kontak</li>
+    	</ul>
+	</aside>
+ 
+	<main class="content">
+    	<div class="card">Konten 1</div>
+    	<div class="card">Konten 2</div>
+    	<div class="card">Konten 3</div>
+	</main>
+ 
+	<footer class="footer">
+    	<p>© 2026 XI PPLG</p>
+	</footer>
+</div>
+ 
+</body>
+</html>
+ 

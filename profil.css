@@ -1,0 +1,12 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+     padding: 10px;
+    width: 800px;
+    background-color: darkblue;
+    color: aliceblue; 
+    text-align: center;
+}

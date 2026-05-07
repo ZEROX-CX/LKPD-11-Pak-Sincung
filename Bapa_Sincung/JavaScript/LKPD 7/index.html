@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #FFFCEF;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #262424;
+            color: #EEE5DA;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+        }
+
+        button {
+            color: white;
+            border: 0;
+            background-color: #262424;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: flex;
+            justify-content: end;
+            padding-right: 20px;
+        }
+
+        .dropdown-menu {
+            list-style: none;
+            display: none;
+            flex-direction: column;
+            padding: 10px;
+            width: 150px;
+            background: white;
+            color: black;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+
+        .dropdown-text {
+            border-radius: 5px;
+            margin-bottom: 10px;
+            margin-left: 30px;
+            font-size: 16px;
+            width: 100px;
+            color: #EEE5DA;
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-text:hover {
+            width: 100px;
+            margin-left: 20px;
+            background-color: #262424;
+            color: #EEE5DA;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .show {
+            
+            display: block;
+        }
+
+        /* === FORM DESIGN === */
+        .form {
+            min-height: calc(100vh - 50px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            background: #262424;
+            padding: 30px;
+            width: 320px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        form h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #EEE5DA;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+            outline-color: #5c899d;
+        }
+
+
+        .btn-login {
+            margin-top: 10px;
+            padding: 10px;
+            background: #EEE5DA;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #f0ddc6;
+        }
+
+        .extra {
+            color: white;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .extra a {
+            color: #EEE5DA;
+            text-decoration: none;
+        }
+
+        .btn-text {
+            color: #262424;
+            text-decoration: none;
+        }
+
+        .card-container {
+            display: flex;
+            margin-left: 5px;
+        }
+
+        .card {
+            margin-bottom: 100px;
+            background-color: #262424;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #EEE5DA;
+            border-radius: 7px;
+            color: white;
+            /* margin-top: 12px; */
+        }
+
+        .card h2 {
+            font-size: large;
+            color: #EEE5DA;
+        }
+
+        .card p {
+            margin-top: 4px;
+        }
+
+        .card button {
+            font-size: 16px;
+            margin-top: 8px;
+            background-color: #EEE5DA;
+            color: #262424;
+            padding: 8px 8px 4px 4px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>E-Learning Seni Budaya</h1>
+        <button onclick="show()">☰</button>
+    </div>
+
+    <div class="dropdown">
+        <ul id="dropdown-menu" class="dropdown-menu">
+            <li><button class="dropdown-text" onclick="menu('dashboard')">Dashboard</button></li>
+            <li><button class="dropdown-text" onclick="menu('register')">Register</button></li>
+            <li><button class="dropdown-text" onclick="menu('login')">Login</button></li>
+            <li><button class="dropdown-text" onclick="menu('login')">Logout</button></li>
+        </ul>
+    </div>
+
+    <div class="form" id="content">
+        <form>
+            <h1>Login</h1>
+
+            <label>Username</label>
+            <input type="text" placeholder="Masukkan username" required>
+
+            <label>Password</label>
+            <input type="password" placeholder="Masukkan password" required>
+
+            <button class="btn-login"><a class="btn-text" href="dashboard.html">Login</a></button>
+
+            <div class="extra">
+                Belum punya akun? <a href="register.html">Register</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+    <script type="text/javascript">
+    function menu(menu) {
+      let c = document.getElementById("content");
+
+      if (menu == "register") {
+        c.innerHTML = `
+
+        <div class="form">
+            <form>
+                <h1>Register</h1>
+
+                <label>Username</label>
+                <input type="text" placeholder="Masukkan username" required>
+
+                <label>Password</label>
+                <input type="password" placeholder="Masukkan password" required>
+
+                <button class="btn-login"><a class="btn-text" href="dashboard.html">Register</a></button>
+
+                <div class="extra">
+                    sudah punya akun? <a href="login.html">Login</a>
+                </div>
+            </form>
+        </div>
+        `;
+      }
+
+      if (menu == "login") {
+        c.innerHTML = `
+        <div class="form" id="content">
+            <form>
+                <h1>Login</h1>
+
+                <label>Username</label>
+                <input type="text" placeholder="Masukkan username" required>
+
+                <label>Password</label>
+                <input type="password" placeholder="Masukkan password" required>
+
+                <button class="btn-login"><a class="btn-text" href="dashboard.html">Login</a></button>
+
+                <div class="extra">
+                    Belum punya akun? <a href="register.html">Register</a>
+                </div>
+            </form>
+        </div>
+        `;
+      }
+
+      if (menu == "dashboard") {
+        c.innerHTML = `
+        <div class="card-container">
+            <div class="card">
+                <h2>Materi HTML</h2>
+
+                <p> HTML adalah bahasa dasar untuk membuat halaman web</p>
+
+                <button class="">
+                    Pelajari
+                </button>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <h2>Materi CSS</h2>
+
+                <p>CSS Digunakan Untuk Membuat Website Kita Terlihat Bagus.</p>
+
+                <button class="">
+                    Pelajari
+                </button>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <h2>Materi JS</h2>
+
+                <p>Javascript bisa digunakan untuk menghitung, memanipulasi data dan validasi data</p>
+
+                <button class="">
+                    Pelajari
+                </button>
+        </div>
+        `;
+      }
+    }
+    </script>
+</body>
+</html>

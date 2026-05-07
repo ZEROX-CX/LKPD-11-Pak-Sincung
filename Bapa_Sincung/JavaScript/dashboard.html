@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+        <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0095ff, #00c6ff);
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: rgb(0, 149, 255);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+        }
+
+        .pilihan {
+            margin-bottom: 5px;
+            color: white;
+            border: 0px;
+            background: linear-gradient(135deg, #0095ff, #00c6ff);
+            width: 100px;
+        }
+
+        .dropdown {
+            display: flex;
+            justify-content: end;
+            padding-right: 20px;
+        }
+
+        .dropdown-menu {
+            list-style: none;
+            display: none;
+            flex-direction: column;
+            padding: 10px;
+            width: 150px;
+            background: white;
+            color: black;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+
+        .dropdown-text {
+            color: black;
+            text-decoration: none;
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-text:hover {
+            background-color: rgb(0, 149, 255);
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .show {
+            display: block;
+        }
+
+        /* === FORM DESIGN === */
+        .form {
+            min-height: calc(100vh - 50px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            background: white;
+            padding: 30px;
+            width: 320px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        form h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0095ff;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #0095ff;
+            box-shadow: 0 0 5px rgba(0,149,255,0.5);
+        }
+
+        .btn-login {
+            margin-top: 10px;
+            padding: 10px;
+            background: #0095ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #007ad1;
+        }
+
+        .extra {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .extra a {
+            color: #0095ff;
+            text-decoration: none;
+        }
+
+        .nav-text {
+            font-size: 16px;
+        }
+
+        .reset {
+            background-color: red;
+            color: white;
+            width: 310px;
+            border: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>E-Learning</h1>
+        <h1 class="nav-text">Materi Pembelajaran</h1>
+        <button onclick="show()">☰</button>
+    </div>
+
+    <div class="dropdown">
+        <ul id="dropdown-menu" class="dropdown-menu">
+            <li class="dropdown-text"><a href="register.html" class="dropdown-text">Register</a></li>
+            <li class="dropdown-text"><a href="login.html" class="dropdown-text">Login</a></li>
+            <li class="dropdown-text"><a href="login.html" class="dropdown-text">Logout</a></li>
+        </ul>
+    </div>
+
+<div class="form">
+    <form action="">
+        <h2 id="judul">Kuis Matematika</h2>
+    
+        <p>2 + 3 = ?</p>
+    
+        <div class="jawaban">
+            <button type="button" class="pilihan" onclick="jawab(4)">4</button>
+            <button type="button" class="pilihan" onclick="jawab(5)">5</button>
+            <button type="button" class="pilihan" onclick="jawab(6)">6</button>
+        </div>
+
+        <button type="button" class="reset" onclick="reset()">Reset</button>
+    
+        <p id="hasil"></p>
+    </form>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>

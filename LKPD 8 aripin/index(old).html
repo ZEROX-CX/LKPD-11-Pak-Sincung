@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Media Pembelajaran Menggambar 2 Dimensi</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f2f2f2;
+}
+
+
+header{
+background:linear-gradient(90deg,#4B32A8,#328FA8);
+color:white;
+text-align:center;
+padding:20px;
+}
+
+header h1{
+margin:0;
+font-size:26px;
+}
+
+header p{
+margin:5px 0 0 0;
+}
+
+
+.container{
+display:flex;
+min-height:calc(100vh - 90px);
+}
+
+
+.sidebar{
+width:230px;
+background:#3254A8;
+padding:15px;
+display:flex;
+flex-direction:column;
+}
+
+.sidebar button{
+margin:6px 0;
+padding:12px;
+border:none;
+border-radius:8px;
+background: #00b4d8;
+color:white;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.sidebar button:hover{
+background:#2E6FD1;
+transform:scale(1.04);
+}
+
+
+.content{
+flex:1;
+background:white;
+padding:30px;
+animation:fade 0.4s;
+}
+
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}
+}
+
+
+input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.btn{
+padding:10px 15px;
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+margin-top:10px;
+}
+
+.submit{
+background:green;
+}
+
+.reset{
+background:red;
+}
+
+
+@media(max-width:900px){
+
+.container{
+flex-direction:column;
+}
+
+.sidebar{
+width:100%;
+flex-direction:row;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.sidebar button{
+flex:1 1 40%;
+margin:5px;
+}
+
+.content{
+padding:20px;
+}
+
+}
+
+@media(max-width:500px){
+
+.sidebar button{
+flex:1 1 100%;
+font-size:14px;
+}
+
+header h1{
+font-size:20px;
+}
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<header>
+<h1>MEDIA PEMBELAJARAN INTERAKTIF</h1>
+<p>Menggambar 2 Dimensi</p>
+</header>
+
+<div class="container">
+
+<div class="sidebar">
+
+<button onclick="menu('home')">PETUNJUK</button>
+<button onclick="menu('kikd')">KI / KD</button>
+<button onclick="menu('materi')">MATERI</button>
+<button onclick="menu('latihan')">LATIHAN SOAL</button>
+<button onclick="menu('evaluasi')">EVALUASI</button>
+<button onclick="menu('profil')">PROFIL</button>
+
+</div>
+
+<div class="content" id="content">
+
+<h2>SELAMAT DATANG</h2>
+
+<p>
+Pada Pembelajaran Interaktif <b>Menggambar 2 Dimensi</b>
+</p>
+
+<p>
+Silakan memilih menu di samping untuk menggunakan media ini.
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+function menu(menu){
+
+let c=document.getElementById("content");
+
+if(menu=="home"){
+c.innerHTML=`
+<h2>PETUNJUK</h2>
+<p>1. Pilih menu yang tersedia.</p>
+<p>2. Pelajari materi menggambar.</p>
+<p>3. Kerjakan latihan soal.</p>
+`;
+}
+
+if(menu=="kikd"){
+c.innerHTML=`
+<h2>KI / KD</h2>
+<p>KI : Memahami konsep menggambar.</p>
+<p>KD : Menerapkan teknik menggambar 2 dimensi.</p>
+`;
+}
+
+if(menu=="materi"){
+c.innerHTML=`
+<h2>MATERI</h2>
+<p>Menggambar 2 dimensi adalah gambar yang hanya memiliki panjang dan lebar.</p>
+<ul>
+<li>Unsur garis</li>
+<li>Bentuk</li>
+<li>Warna</li>
+<li>Tekstur</li>
+</ul>
+`;
+}
+
+if(menu=="latihan"){
+c.innerHTML=`
+
+<h2>LATIHAN SOAL</h2>
+
+<p>1. Gambar yang memiliki panjang dan lebar disebut?</p>
+<input id="q1">
+
+<p>2. Unsur dasar menggambar adalah?</p>
+<input id="q2">
+
+<button class="btn submit" onclick="nilai()">Kirim Jawaban</button>
+<button class="btn reset" onclick="reset()">Reset</button>
+
+<p id="hasil"></p>
+
+`;
+}
+
+if(menu=="evaluasi"){
+c.innerHTML=`
+<h2>EVALUASI</h2>
+<p>Evaluasi pembelajaran menggambar 2 dimensi.</p>
+`;
+}
+
+if(menu=="profil"){
+c.innerHTML=`
+<h2>PROFIL</h2>
+<p>Nama : Isi Nama Kamu</p>
+<p>Kelas : Isi Kelas Kamu</p>
+<p>Sekolah : Isi Sekolah Kamu</p>
+`;
+}
+
+}
+
+
+function nilai(){
+
+let q1=document.getElementById("q1").value;
+let q2=document.getElementById("q2").value;
+
+if(q1=="" || q2==""){
+alert("Jawaban tidak boleh kosong!");
+return;
+}
+
+let skor=0;
+
+if(q1.toLowerCase()=="2 dimensi" || q1.toLowerCase()=="dua dimensi"){
+skor+=50;
+}
+
+if(q2.toLowerCase()=="garis"){
+skor+=50;
+}
+
+document.getElementById("hasil").innerHTML="Skor Anda : "+skor;
+
+}
+
+function reset(){
+
+document.getElementById("q1").value="";
+document.getElementById("q2").value="";
+document.getElementById("hasil").innerHTML="";
+
+}
+
+</script>
+
+</body>
+</html>
