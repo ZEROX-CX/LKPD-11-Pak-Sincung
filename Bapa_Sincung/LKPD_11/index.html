@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Siswa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    circle {
+      stroke-dasharray: 472;
+      stroke-dashoffset: 400;
+    }
+  </style>
+</head>
+<body class="bg-white dark:bg-[#141414] text-black dark:text-white flex transition-colors duration-300">
+
+  <!-- SIDEBAR -->
+  <aside class="w-[220px] h-screen bg-[#252746] text-[#8CA9FF] p-5">
+    <h1 class="text-xl font-bold mb-8">Nova</h1>
+
+    <div class="space-y-4">
+      <button class="block w-full text-left py-3 px-4 rounded-lg hover:bg-[#8CA9FF] hover:text-[#131432] transition-colors duration-200" onclick="menu('dashboard')">Dashboard</button>
+      <button class="block w-full text-left py-3 px-4 rounded-lg hover:bg-[#8CA9FF] hover:text-[#131432] transition-colors duration-200" onclick="menu('materi')">Materi</button>
+      <button class="block w-full text-left py-3 px-4 rounded-lg hover:bg-[#8CA9FF] hover:text-[#131432] transition-colors duration-200" onclick="menu('kuis')">Kuis</button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 p-6" id="main">
+    <div id="content" class="content">
+      <!-- Content akan diisi oleh JavaScript -->
+    </div>
+  </main>
+
+    <section class="hidden">
+        <!-- DASHBOARD TEMPLATE -->
+        <div data-menu="dashboard">
+            <!-- HEADER -->
+            <div class="flex justify-between items-center mb-6">
+              <div class="flex items-center gap-4">
+                <div class="relative">
+                  <img id="profilePic" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiMyNTI3NDYiLz4KPHBhdGggZD0iTTIwIDIwQzIyLjc2MTQgMjAgMjUgMTcuNzYxNCAyNSAxNWMxNy43NjE0IDE3Ljc2MTQgMTUgMjAgMTcuNzYxNCAyMCAyMEMxNy4yMzg2IDIwIDE1IDIyLjIzODYgMTUgMjVDMTUgMjcuNzYxNCAxNy4yMzg2IDMwIDIwIDMwQzIyLjc2MTQgMzAgMjUgMjcuNzYxNCAyNSAyN0MxNy43NjE0IDI1IDIwIDIyLjIzODYgMjAgMjBaIiBmaWxsPSIjOUNBMUZGIi8+Cjwvc3ZnPgo=" alt="Profile" class="w-12 h-12 rounded-full border-2 border-[#8CA9FF] cursor-pointer" onclick="document.getElementById('profileInput').click()" />
+                  <input type="file" id="profileInput" accept="image/*" class="hidden" onchange="uploadProfilePic()" />
+                  <div class="absolute -bottom-1 -right-1 bg-[#8CA9FF] text-[#131432] text-xs px-1 py-0.5 rounded-full cursor-pointer" onclick="document.getElementById('profileInput').click()">+</div>
+                </div>
+                <div>
+                  <h1 class="text-2xl font-semibold text-black dark:text-[#8CA9FF]">Dashboard Siswa</h1>
+                  <p id="userName" class="text-sm text-black mt-1 dark:text-white">Halo, Siswa</p>
+                </div>
+              </div>
+
+
+              <div class="flex gap-2">
+                <button onclick="toggleTheme()" 
+                  class="bg-[#131432] text-white px-4 py-2 rounded hover:bg-[#8CA9FF] hover:text-[#131432] transition">
+                  🌙 / ☀️
+                </button>
+
+                <button onclick="logout()" 
+                  class="bg-[#8CA9FF] text-[#131432] px-4 py-2 rounded hover:bg-[#131432] hover:text-[#8CA9FF] transition">
+                  Logout
+                </button>
+              </div>
+            </div>
+
+            <!-- CARD GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+              <!-- PROGRESS -->
+              <div class="bg-[#252746] text-white p-5 rounded-xl shadow relative">
+                <h1 class="mb-4">Progress</h1>
+
+                <div class="flex items-center">
+                  <div class="relative w-[80px] h-[80px]">
+                    <span class="progress-text absolute inset-0 flex items-center justify-center font-bold">
+                      0%
+                    </span>
+
+                    
+                    <svg width="100" height="100" viewBox="0 0 120 120">
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        stroke-linecap="round"
+                        class="progress-circle fill-none stroke-[10px] stroke-[#8CA9FF]"
+                        />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MATERI -->
+              <div class="bg-[#252746] text-white p-5 rounded-xl shadow">
+                <h1>Materi</h1>
+                <h1 class="text-3xl mt-2">10</h1>
+              </div>
+
+              <!-- KUIS -->
+              <div class="bg-[#252746] text-white p-5 rounded-xl shadow">
+                <h1>Kuis</h1>
+                <h1 class="text-3xl mt-2">10</h1>
+              </div>
+
+              <!-- XP -->
+              <div class="bg-[#252746] text-white p-5 rounded-xl shadow">
+                <h1 id="xpText">XP</h1>
+                <h1 class="text-3xl mt-2 xp-value">100</h1>
+              </div>
+
+            </div>
+
+            <!-- ACTION -->
+            <div class="mt-8">
+              <button onclick="kurangiProgress()"
+                class="bg-[#131432] text-white px-5 py-3 rounded hover:bg-[#8CA9FF] hover:text-[#131432] transition">
+                Kurangi Progress (-10 progress)
+              </button>
+            </div>
+        </div>
+        <div data-menu="materi" class="p-6">
+            <h1 class="text-2xl font-semibold text-black dark:text-[#8CA9FF] mb-6">Materi Pembelajaran</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div class="bg-[#252746] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h1 class="text-[#8CA9FF] text-xl font-semibold mb-3">HTML</h1>
+                    <p class="text-white text-sm mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique eveniet repellendus repellat ad nisi expedita, perspiciatis nesciunt assumenda consectetur vo</p>
+                    <button onclick="tambahProgress(); tambahXp()" class="text-[#252746] bg-[#8CA9FF] rounded-md py-2 px-4 hover:bg-[#131432] hover:text-[#8CA9FF] transition-colors duration-200">Mulai</button>
+                </div>
+
+                <div class="bg-[#252746] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h1 class="text-[#8CA9FF] text-xl font-semibold mb-3">CSS</h1>
+                    <p class="text-white text-sm mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique eveniet repellendus repellat ad nisi expedita, perspiciatis nesciunt assumenda consectetur vo</p>
+                    <button onclick="tambahProgress()" class="text-[#252746] bg-[#8CA9FF] rounded-md py-2 px-4 hover:bg-[#131432] hover:text-[#8CA9FF] transition-colors duration-200">Mulai</button>
+                </div>
+
+                <div class="bg-[#252746] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h1 class="text-[#8CA9FF] text-xl font-semibold mb-3">JavaScript</h1>
+                    <p class="text-white text-sm mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique eveniet repellendus repellat ad nisi expedita, perspiciatis nesciunt assumenda consectetur vo</p>
+                    <button onclick="tambahProgress()" class="text-[#252746] bg-[#8CA9FF] rounded-md py-2 px-4 hover:bg-[#131432] hover:text-[#8CA9FF] transition-colors duration-200">Mulai</button>
+                </div>
+
+                <div class="bg-[#252746] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <h1 class="text-[#8CA9FF] text-xl font-semibold mb-3">PHP</h1>
+                    <p class="text-white text-sm mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique eveniet repellendus repellat ad nisi expedita, perspiciatis nesciunt assumenda consectetur vo</p>
+                    <button onclick="tambahProgress()" class="text-[#252746] bg-[#8CA9FF] rounded-md py-2 px-4 hover:bg-[#131432] hover:text-[#8CA9FF] transition-colors duration-200">Mulai</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- KUIS -->
+        <div data-menu="kuis" class="p-6">
+          <h1 class="text-2xl font-semibold text-black dark:text-[#8CA9FF] mb-6">Kuis Interaktif</h1>
+
+          <div class="bg-[#252746] p-6 rounded-xl shadow-lg">
+            <h2 id="question" class="text-white text-lg mb-6">Apa kegunaan dari function di javascript</h2>
+
+            <div id="answers" class="space-y-3">
+
+            </div>
+
+            <button onclick="nextQuestion()" 
+              class="mt-6 bg-[#8CA9FF] text-[#131432] px-5 py-2 rounded hover:bg-[#131432] hover:text-[#8CA9FF] transition">
+              Selanjutnya
+            </button>
+          </div>
+
+          <div class="mt-6 text-black dark:text-white">
+            Skor: <span id="score">0</span>
+          </div>
+        </div>
+  </section>
+
+
+<script src="script.js"></script>
+</body>
+</html>
